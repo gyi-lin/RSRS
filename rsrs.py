@@ -356,7 +356,7 @@ def main():
             styled_table = recent_data.style.format(
                 {col: '{:.4f}' for col in numeric_cols},
                 na_rep="N/A"
-            ).applymap(
+            ).map(
                 lambda x: 'color: red' if x == '买入' else (
                     'color: green' if x == '卖出' else (
                         'color: orange' if x == '空仓' else '')
@@ -402,7 +402,7 @@ def main():
                 # 应用样式
                 styled_trades = df_trades.style.format({
                     '区间收益率 (%)': '{:.2f}%'
-                }).applymap(color_return, subset=['区间收益率 (%)'])
+                }).map(color_return, subset=['区间收益率 (%)'])
 
                 # 显示表格
                 st.dataframe(styled_trades, height=400)
